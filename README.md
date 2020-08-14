@@ -19,6 +19,7 @@ EeveeScript is a programming language based off of Assembly, but easier.
 ## Quick Start
 
 Go into your shell
+<br>
 $ git clone https://github.com/InspyrePython/EeveeScript.git
 <br>
 $ cd path/to/EeveeScript
