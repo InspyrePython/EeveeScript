@@ -1,4 +1,4 @@
-# EeveeScript
+# EeveeScript Beta 1.0
 ___
 EeveeScript is a programming language based off of Assembly, but easier.
 ## Contents:
