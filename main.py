@@ -98,11 +98,20 @@ def run(code, stack, pointer):
 		for snip in funcs[code[5:]].split('\n'):
 			stack, pointer = run(snip, stack, pointer)
 	elif code[0:4] == 'jmp ':
-		jmpto = code[4:-1]
+		jmpto = code[4:]
 		a = open('code.eve', 'r')
+		code = a.readline()
+		jmpcode = ''
 		while code != jmpto + ':\n': 
 			code = a.readline()
+		while code != 'end\n':
+			jmpcode += code
+			code = a.readline()
+		for snip in jmpcode.split('\n'):
+			stack, pointer = run(snip, stack, pointer)
 	elif code == 'end\n':
+		pass
+	elif code == 'end':
 		pass
 	elif code == 'pass\n':
 		pass
@@ -118,9 +127,31 @@ def run(code, stack, pointer):
 		add1 = varis[code[4:code.find(',')]]
 		varis[code[4:code.find(',')]] = add1 * varis[code[code.find(',') + 1:-1]]
 		varis[code[code.find(',') + 1:-1]] = 0
+	elif code[0:4] == 'div ':
+			add1 = varis[code[4:code.find(',')]]
+			varis[code[4:code.find(',')]] = add1 // varis[code[code.find(',') + 1:-1]]
+			varis[code[code.find(',') + 1:-1]] = 0
+	elif code[0:4] == 'mla ':
+		parse = code[4:].split(',')
+		m1 = parse[0]
+		m2 = parse[1]
+		m3 = parse[2].replace('\n', '')
+		varis[m1] = (varis[m1] * varis[m2]) + varis[m3]
+		varis[m2] = 0
+		varis[m3] = 0
+	elif code[0:4] == 'inc ':
+		varis[code[4:code.find(',')]] += int(code[code.find(',') + 1:])
+	elif code[0:4] == 'dec ':
+		varis[code[4:code.find(',')]] -= int(code[code.find(',') + 1:])
+	elif code[0:5] == 'lprt ':
+		print(varis[code[5:code.find(',')]][int(code[code.find(',') + 1:-1])])
+	elif code[0:5] == 'apnd ':
+		varis[code[5:code.find(',')]].append(code[code.find(',') + 1:-1])
+	elif code[0:6] == 'if in ':
+		pass
 	else:
 		try:
-			if code[len(code) - 2] == ':':
+			if code[len(code) - 1] == ':':
 				pass
 			else:
 				errors.raiseError(0, f"Unknown {code}")
@@ -165,7 +196,10 @@ if code == '_global start\n':
 		elif code == 'aspoi\n':
 			print(ord(stack[pointer]), end = '')
 		elif code[0:7] == 'print $':
-			print(varis[code[7:-1]])
+			try:
+				print(varis[code[7:-1]])
+			except KeyError:
+				errors.raiseError(5, f'Unknown variable {code[7:-1]}')
 		elif code == 'in\n':
 			stack[pointer] = input('')
 		elif code[0:6] == 'print ':
@@ -245,6 +279,16 @@ if code == '_global start\n':
 					code = a.readline()
 		elif code == 'if gr\n':
 			if stack[pointer] < stack[pointer + 1]:
+				while code != 'else\n':
+					stack, pointer = run(code, stack, pointer)
+					code = a.readline()
+				while code != 'endif\n':
+					code = a.readline()
+			else:
+				while code != 'else\n':
+					code = a.readline()
+		elif code[0:6] == 'if in ':
+			if stack[pointer] in varis[code[6:code.find(';')]]:
 				while code != 'else\n':
 					stack, pointer = run(code, stack, pointer)
 					code = a.readline()
@@ -352,8 +396,26 @@ if code == '_global start\n':
 			add1 = varis[code[4:code.find(',')]]
 			varis[code[4:code.find(',')]] = add1 * varis[code[code.find(',') + 1:-1]]
 			varis[code[code.find(',') + 1:-1]] = 0
+		elif code[0:4] == 'div ':
+			add1 = varis[code[4:code.find(',')]]
+			varis[code[4:code.find(',')]] = add1 // varis[code[code.find(',') + 1:-1]]
+			varis[code[code.find(',') + 1:-1]] = 0
+		elif code[0:4] == 'mla ':
+			parse = code[4:].split(',')
+			m1 = parse[0]
+			m2 = parse[1]
+			m3 = parse[2].replace('\n', '')
+			varis[m1] = (varis[m1] * varis[m2]) + varis[m3]
+			varis[m2] = 0
+			varis[m3] = 0
+		elif code[0:4] == 'inc ':
+			varis[code[4:code.find(',')]] += int(code[code.find(',') + 1:-1])
+		elif code[0:4] == 'dec ':
+			varis[code[4:code.find(',')]] -= int(code[code.find(',') + 1:-1])
 		elif code[0:5] == 'lprt ':
 			print(varis[code[5:code.find(',')]][int(code[code.find(',') + 1:-1])])
+		elif code[0:6] == 'lpush ':
+			stack[pointer] = varis[code[5:code.find(',')]][int(code[code.find(',') + 1:-1])]
 		elif code[0:5] == 'apnd ':
 			varis[code[5:code.find(',')]].append(code[code.find(',') + 1:-1])
 		else:
