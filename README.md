@@ -237,7 +237,9 @@ func
 ```
 We just defined the function hello.
 To call it, simply type `call hello`.
+<br>
 Output: `hello`
+<br>
 Great!
 
 ## FAQ
