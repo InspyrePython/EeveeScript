@@ -51,23 +51,23 @@ out | None | Prints the current position of the pointer | `out`
 r | None | Moves the pointer right | `r`
 l | None | Moves the pointer left | `l`
 in | None | Pushes user input to stack | `in`
-mov | stack_name | Moves current stack to stack_name | `mov ebx` | See _Using stacks_
-if | condition, check | Compares item at postion of pointer to _check_ in some cases | `if eq` | See _Conditional Branching_
+mov | stack_name | Moves current stack to stack_name | `mov ebx` | See [Using Stacks](https://github.com/InspyrePython/EeveeScript#using-stacks)
+if | condition, check | Compares item at postion of pointer to _check_ in some cases | `if eq` | See [Conditional Branching](https://github.com/InspyrePython/EeveeScript#conditional-branching)
 else | None | After `if`, if False, execute this | `else` 
 endif | None| End conditional branch | `endif`
-for | int | For _int_ times, execute this code | `for` | See _Control Flow_
+for | int | For _int_ times, execute this code | `for` | See [Control Flow](https://github.com/InspyrePython/EeveeScript#control-flow)
 endfor | None | End `for` loop | `endfor` 
-int | name, int | Assign _name_ a value of _int_ | `int foo,34` | See _Variables_
-str | name, str | Assign _name_ a value of _str_ | `str bar,hi` | See _Variables_ 
-list | name, list | Assign _name_ a value of _list_ | `list barfoo,34,34` | See _Variables_
+int | name, int | Assign _name_ a value of _int_ | `int foo,34` | See [Variables](https://github.com/InspyrePython/EeveeScript#variables)
+str | name, str | Assign _name_ a value of _str_ | `str bar,hi` | See [Variables](https://github.com/InspyrePython/EeveeScript#variables)
+list | name, list | Assign _name_ a value of _list_ | `list barfoo,34,34` | See [Variables](https://github.com/InspyrePython/EeveeScript#variables)
 add | variable1, variable2 | Add _variable1_ and _variable2_ together and store the result in _variable1_| `add bar,foo`
 sub | variable1, variable2 | Subtract _variable1_ and _variable2_ and store the result in _variable1_| `sub bar,foo`
 mul | variable1, variable2 | Multiply _variable1_ and _variable2_ and store the result in _variable1_| `mul bar,foo`
-jmp | str | Jump to label _str_ | `jmp foo` | See _Jumping_
-func | str | Define _str_ | `func foo` | See _Functions_
-func | None | After `func`, stop defining `func _str_` | See _Functions_
-end | None | After a label, stop defining that label | `end` | See _Jumping_
-call | func | Call function _func_ | `call foo` | See _Functions_
+jmp | str | Jump to label _str_ | `jmp foo` | See [Jumping](https://github.com/InspyrePython/EeveeScript#jumping)
+func | str | Define _str_ | `func foo` | See [Functions](https://github.com/InspyrePython/EeveeScript#functions)
+func | None | After `func`, stop defining `func _str_` | `func` | See [Functions](https://github.com/InspyrePython/EeveeScript#functions)
+end | None | After a label, stop defining that label | `end` | See [Jumping](https://github.com/InspyrePython/EeveeScript#jumping)
+call | func | Call function _func_ | `call foo` | See [Functions](https://github.com/InspyrePython/EeveeScript#functions)
 lprt | list, int | Print item _int_ of list _list_ | `lprt foo,1`
 apnd | list, str\int | Append _str/int_ to _list_ | `apnd bar,hello`
 n | None | Print a newline | `n`
@@ -81,6 +81,7 @@ pass | None | Pass and do nothing | `pass`
 - [x] get prt working again
 - [ ] freakin' LOOP NESTING
 - [ ] while loops
+
 ## Using Stacks
 There are 4 stacks in EeveeScript,
 * eax
