@@ -10,15 +10,19 @@ EeveeScript is a programming language based off of Assembly, but easier.
 
 Go into your shell
 $ git clone https://github.com/InspyrePython/EeveeScript.git
+<br>
 $ cd path/to/EeveeScript
 
 Exit, and open "code.eve" and tpye in your code,
 After you're done, go into your shell again, and type this:
+<br>
 $ python main.py
+<br>
 And rinse and repeat!
 
 ## **Very** Quick Start
 [Try on repl.it](https://repl.it/@LoganSpong/EeveeScript#code.eve)
+<br>
 Code in "code.eve".
 
 ## Commands
@@ -60,6 +64,13 @@ n | None | Print a newline | `n`
 io.clear | None | Clear the console | `io.clear`
 pass | None | Pass and do nothing | `pass` 
 
+## To-do
+- [x] for loops
+- [x] ifs
+- [x] fix jmp bug with for loops
+- [x] get prt working again
+- [ ] freakin' LOOP NESTING
+- [ ] while loops
 ## Using Stacks
 There are 4 stacks in EeveeScript,
 * eax
