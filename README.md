@@ -36,5 +36,85 @@ sub | variable1, variable2 | Subtract _variable1_ and _variable2_ and store the 
 mul | variable1, variable2 | Multiply _variable1_ and _variable2_ and store the result in _variable1_| `mul bar,foo`
 jmp | str | Jump to label _str_ | `jmp foo` | See _Jumping_
 func | str | Define _str_ | `func foo` | See _Functions_
-end | None | After `func`, stop defining `func _str_` | `end` | See _Functions_
+func | None | After `func`, stop defining `func _str_` | See _Functions_
+end | None | After a label, stop defining that label | `end` | See _Jumping_
 call | func | Call function _func_ | `call foo` | See _Functions_
+lprt | list, int | Print item _int_ of list _list_ | `lprt foo,1`
+apnd | list, str\int | Append _str/int_ to _list_ | `apnd bar,hello`
+n | None | Print a newline | `n`
+io.clear | None | Clear the console | `io.clear`
+pass | None | Pass and do nothing | `pass` 
+
+## Using Stacks
+There are 4 stacks in EeveeScript,
+* eax
+* ebx
+* ecx
+* and edx
+
+All stacks behave the same.
+As with the `mov` command, _stack_name_ can be any one of these values.
+
+## Conditional Branching
+### if
+The `if` command is easy to handle.
+There are 8 different varieties for `if`
+* if eq; - Checks if the item at the position of the pointer is equal to the one next to it
+* if neq; - Checks if the item at the position of the pointer is not equal to the one next to it
+* if gr; - Checks if the item at the position of the pointer is greater than the one next to it
+* if ls; - Checks if the item at the position of the pointer is less than the one next to it
+* if eq _check_; - Checks if the item at the position of the pointer is equal to _check_
+* if neq _check;_ - Checks if the item at the position of the pointer is not equal to _check_
+* if gr _check_; - Checks if the item at the position of the pointer is greater than  _check_
+* if ls _check_; - Checks if the item at the position of the pointer is less than _check_
+
+Note:
+You cannot execute ifs inside of an if, you have to do something like this:
+```
+if eq north;
+print North it is..
+else
+pass
+endif
+if eq south;
+print South.. Ok.
+else
+pass
+endif
+```
+
+If the result is False, we move on to...
+### else
+Else executes the code under it **if** the if command above it resulted in False.
+After, it goes to...
+### endif
+Endif ends the if/else statement.
+
+## Control Flow
+With the `for` command, we can repeat something x amount of times.
+Example:
+```
+for 3
+print bar
+```
+Note: 
+You can't put `if` inside `for` loops
+Yes, `while` is coming soon.
+
+## Jumping
+`jmp` is a special command.
+`jmp` is like a train with "stops" that are labels
+### What are "labels"?
+Labels are words, followed by ":", that have code in the middle, and end with `end`.
+An example of a label:
+```
+hello:
+print hi
+end
+```
+### Ok, so what's the purpose?
+`jmp` allows you to jump to labels.
+Example:
+```
+jmp say_hello
+```
