@@ -6,8 +6,23 @@ EeveeScript is a programming language based off of Assembly, but easier.
 * Written in Python - Python is a very popular language, so making added EeveeScript functions should be easy.
 * Frequent updates - EeveeScript is always expanding! 
 
-## Functions
-Function | Argument(s) | Description | Sample | Resources
+## Quick Start
+
+Go into your shell
+$ git clone https://github.com/InspyrePython/EeveeScript.git
+$ cd path/to/EeveeScript
+
+Exit, and open "code.eve" and tpye in your code,
+After you're done, go into your shell again, and type this:
+$ python main.py
+And rinse and repeat!
+
+## **Very** Quick Start
+[Try on repl.it](https://repl.it/@LoganSpong/EeveeScript#code.eve)
+Code in "code.eve".
+
+## Commands
+Command | Argument(s) | Description | Sample | Resources
 ------------ | ------------- | ------------- | ------------- | ------------------
 _global start | None | Starts the program | `_global start`
 _global end | None | Ends the program | `_global end`
@@ -98,7 +113,7 @@ for 3
 print bar
 ```
 Note: 
-You can't put `if` inside `for` loops
+You can't put `if` inside `for` loops.
 Yes, `while` is coming soon.
 
 ## Jumping
@@ -116,5 +131,102 @@ end
 `jmp` allows you to jump to labels.
 Example:
 ```
+say_hello:
+print Hello!
+end
+for 3
 jmp say_hello
+endfor
 ```
+Easy, right?
+
+## Variables
+Variables can be assigned using `list`, `str`, or `int`, depending on the type you need.
+### Assigning Variables
+#### Integers
+`int` assigns an integer. 
+Example:
+```
+int foo,34
+```
+Now, foo is equal to 34.
+We can check that by saying:
+```
+print $foo
+```
+It will print "34". Great!
+
+#### Strings
+`str` assigns an string. 
+Example:
+```
+str foo,hello
+```
+Now, foo is equal to "hello".
+We can check that by saying:
+```
+print $foo
+```
+It will print "hello". Great!
+
+#### Lists
+`list` assigns an list. 
+Example:
+```
+list foo,34,45,hello
+```
+Now, foo is equal to [34, 45, "hello"].
+We can check that by saying:
+```
+print $foo
+```
+It will print "[34, 45, "hello"]". Great!
+
+We can change the list by using `apnd`.
+Example:
+```
+apnd foo,"bye"
+```
+`apnd` appends a value to the list.
+Did it work?
+We can test that by doing:
+```
+print $foo
+```
+It will print "[34, 45, "hello", "bye"]".
+Nice!
+
+We can print certain list items with `lprt`.
+Example:
+```
+lprt foo,3
+```
+This prints item 3 of the list foo.
+The output is "bye".
+Awesome!
+
+## Functions
+You can define a function using `func`.
+Example:
+```
+func hello
+print hello
+func
+```
+We just defined the function hello.
+To call it, simply type `call hello`.
+Output: `hello`
+Great!
+
+## FAQ
+### Q: Can I make pull requests?
+A: Yeah! Edit whatever, and post a bug under the tag "community fixes". I might just implent it!
+
+### Q: What dialect of assmebly is this inspired off of?
+A: x86 Assmebly.
+
+### Q: How can I share my creations?
+A: By posting a bug with the tag "creation".
+
+
+
