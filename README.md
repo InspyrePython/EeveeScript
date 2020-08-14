@@ -1,6 +1,16 @@
 # EeveeScript
 ___
 EeveeScript is a programming language based off of Assembly, but easier.
+## Contents:
+* [To-do](https://github.com/InspyrePython/EeveeScript#to-do)
+* [Commands](https://github.com/InspyrePython/EeveeScript#commands)
+* [Stacks](https://github.com/InspyrePython/EeveeScript#stacks)
+* [Conditional Branching](https://github.com/InspyrePython/EeveeScript#conditional-branching)
+* [Control Flow](https://github.com/InspyrePython/EeveeScript#control-flow)
+* [Jumping](https://github.com/InspyrePython/EeveeScript#jumping)
+* [Variables](https://github.com/InspyrePython/EeveeScript#variables)
+* [Functions](https://github.com/InspyrePython/EeveeScript#functions)
+* [FAQ](https://github.com/InspyrePython/EeveeScript#faq)
 ## Key qualities
 * Jumping - Like functions, but let you **move** around the code.
 * Written in Python - Python is a very popular language, so making added EeveeScript functions should be easy.
@@ -239,5 +249,5 @@ A: x86 Assmebly.
 ### Q: How can I share my creations?
 A: By posting a bug with the tag "creation".
 
-
+* [^ Back to top ^](https://github.com/InspyrePython/EeveeScript#contents)
 
